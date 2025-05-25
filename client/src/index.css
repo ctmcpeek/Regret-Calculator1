@@ -1,0 +1,338 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Matrix theme colors */
+:root {
+  --background: 0 0% 0%; /* #000000 */
+  --foreground: 120 100% 50%; /* #00ff00 */
+  --muted: 120 100% 7%; /* #111111 */
+  --muted-foreground: 120 100% 40%; /* #00cc00 */
+  --popover: 0 0% 6.7%; /* #111111 */
+  --popover-foreground: 120 100% 50%; /* #00ff00 */
+  --card: 0 0% 6.7%; /* #111111 */
+  --card-foreground: 120 100% 50%; /* #00ff00 */
+  --border: 120 100% 50%; /* #00ff00 */
+  --input: 0 0% 6.7%; /* #111111 */
+  --primary: 120 100% 50%; /* #00ff00 */
+  --primary-foreground: 0 0% 0%; /* #000000 */
+  --secondary: 0 0% 6.7%; /* #111111 */
+  --secondary-foreground: 120 100% 50%; /* #00ff00 */
+  --accent: 0 0% 6.7%; /* #111111 */
+  --accent-foreground: 120 100% 50%; /* #00ff00 */
+  --destructive: 0 84.2% 60.2%; /* #ef4444 */
+  --destructive-foreground: 60 9.1% 97.8%; /* #fefce8 */
+  --ring: 120 100% 50%; /* #00ff00 */
+  --radius: 0.5rem;
+  
+  /* Matrix specific colors */
+  --matrix-green: 120 100% 50%; /* #00ff00 */
+  --matrix-bg: 0 0% 0%; /* #000000 */
+  --matrix-dark: 0 0% 6.7%; /* #111111 */
+  --bitcoin: 36 95% 53%; /* #F7931A */
+  --ethereum: 229 75% 66%; /* #627EEA */
+  --solana: 263 100% 65%; /* #9945FF */
+}
+
+.dark {
+  --background: 0 0% 0%; /* #000000 */
+  --foreground: 120 100% 50%; /* #00ff00 */
+  --muted: 120 100% 7%; /* #111111 */
+  --muted-foreground: 120 100% 40%; /* #00cc00 */
+  --popover: 0 0% 6.7%; /* #111111 */
+  --popover-foreground: 120 100% 50%; /* #00ff00 */
+  --card: 0 0% 6.7%; /* #111111 */
+  --card-foreground: 120 100% 50%; /* #00ff00 */
+  --border: 120 100% 50%; /* #00ff00 */
+  --input: 0 0% 6.7%; /* #111111 */
+  --primary: 120 100% 50%; /* #00ff00 */
+  --primary-foreground: 0 0% 0%; /* #000000 */
+  --secondary: 0 0% 6.7%; /* #111111 */
+  --secondary-foreground: 120 100% 50%; /* #00ff00 */
+  --accent: 0 0% 6.7%; /* #111111 */
+  --accent-foreground: 120 100% 50%; /* #00ff00 */
+  --destructive: 0 62.8% 30.6%; /* #dc2626 */
+  --destructive-foreground: 120 100% 50%; /* #00ff00 */
+  --ring: 120 100% 50%; /* #00ff00 */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-terminal antialiased bg-matrix-bg text-matrix-green;
+    font-family: 'Courier New', monospace;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Matrix terminal glow effect */
+  .terminal-glow {
+    text-shadow: 0 0 10px hsl(var(--matrix-green));
+    box-shadow: 0 0 15px hsla(var(--matrix-green), 0.3);
+  }
+
+  /* Font families */
+  .font-terminal {
+    font-family: 'Courier New', monospace;
+  }
+
+  .font-impact {
+    font-family: 'Impact', 'Arial Black', sans-serif;
+  }
+
+  /* Matrix specific colors */
+  .text-matrix-green {
+    color: hsl(var(--matrix-green));
+  }
+
+  .bg-matrix-bg {
+    background-color: hsl(var(--matrix-bg));
+  }
+
+  .bg-matrix-dark {
+    background-color: hsl(var(--matrix-dark));
+  }
+
+  .border-matrix-green {
+    border-color: hsl(var(--matrix-green));
+  }
+
+  /* Crypto colors */
+  .text-bitcoin {
+    color: hsl(var(--bitcoin));
+  }
+
+  .text-ethereum {
+    color: hsl(var(--ethereum));
+  }
+
+  .text-solana {
+    color: hsl(var(--solana));
+  }
+
+  /* Meme card effects */
+  .meme-card {
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, hsl(var(--matrix-dark)) 0%, hsl(var(--matrix-bg)) 100%);
+  }
+
+  .meme-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px hsla(var(--matrix-green), 0.2);
+  }
+
+  /* Crypto ticker */
+  .crypto-ticker {
+    background: linear-gradient(90deg, hsl(var(--matrix-bg)) 0%, hsl(var(--matrix-dark)) 50%, hsl(var(--matrix-bg)) 100%);
+  }
+
+  /* Upload zone */
+  .upload-zone {
+    border: 2px dashed hsl(var(--matrix-green));
+    transition: all 0.3s ease;
+  }
+
+  .upload-zone:hover,
+  .upload-zone.dragover {
+    border-color: hsl(120 100% 40%);
+    background: hsla(var(--matrix-green), 0.1);
+  }
+}
+
+@layer utilities {
+  /* Animations */
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  @keyframes glitch {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-2px); }
+    40% { transform: translateX(2px); }
+    60% { transform: translateX(-1px); }
+    80% { transform: translateX(1px); }
+  }
+
+  @keyframes ticker {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 15px hsla(var(--matrix-green), 0.3);
+    }
+    50% {
+      box-shadow: 0 0 25px hsla(var(--matrix-green), 0.6);
+    }
+  }
+
+  .animate-blink {
+    animation: blink 1s infinite;
+  }
+
+  .animate-glitch {
+    animation: glitch 0.5s ease-in-out;
+  }
+
+  .animate-ticker {
+    animation: ticker 60s linear infinite;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* Responsive text */
+  .text-responsive {
+    font-size: clamp(1rem, 4vw, 2rem);
+  }
+
+  .text-responsive-lg {
+    font-size: clamp(2rem, 8vw, 6rem);
+  }
+
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--matrix-bg));
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(var(--matrix-green));
+    border-radius: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(120 100% 40%);
+  }
+
+  /* Loading states */
+  .loading-shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--matrix-dark)) 25%,
+      hsl(var(--matrix-green) / 0.1) 50%,
+      hsl(var(--matrix-dark)) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /* Focus states */
+  .focus-glow:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--matrix-green)), 0 0 10px hsla(var(--matrix-green), 0.5);
+  }
+
+  /* Button variants */
+  .btn-matrix {
+    background-color: hsl(var(--matrix-green));
+    color: hsl(var(--matrix-bg));
+    border: 1px solid hsl(var(--matrix-green));
+    transition: all 0.3s ease;
+  }
+
+  .btn-matrix:hover {
+    background-color: hsl(120 100% 40%);
+    box-shadow: 0 0 20px hsla(var(--matrix-green), 0.5);
+    transform: translateY(-1px);
+  }
+
+  .btn-matrix:active {
+    transform: translateY(0);
+  }
+
+  /* Glass effect */
+  .glass-effect {
+    background: hsla(var(--matrix-green), 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsla(var(--matrix-green), 0.2);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(45deg, hsl(var(--matrix-green)), hsl(var(--ethereum)), hsl(var(--bitcoin)));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* Font Awesome compatibility */
+.fab, .fas, .far {
+  font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands";
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --matrix-green: 120 100% 75%;
+    --matrix-bg: 0 0% 0%;
+    --matrix-dark: 0 0% 10%;
+  }
+}
+
+/* Dark mode preference */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
